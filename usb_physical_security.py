@@ -818,17 +818,17 @@ Tips:
     def open_project_info(self):
         """Open project information in default browser"""
         try:
-            # Open the README file instead since project_info.html was removed
+            # Open the project_info.html file
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            readme_path = os.path.join(current_dir, "README.md")
+            html_path = os.path.join(current_dir, "project_info.html")
             
-            if os.path.isfile(readme_path):
-                # Try to open with default markdown viewer or text editor
-                os.startfile(readme_path)
+            if os.path.isfile(html_path):
+                # Open with default web browser
+                os.startfile(html_path)
             else:
-                messagebox.showinfo("Information", "README.md file not found. Please check the documentation.")
+                messagebox.showinfo("Information", "project_info.html file not found. Please check the project files.")
         except Exception as e:
-            messagebox.showerror("Error", f"Failed to open documentation: {str(e)}")
+            messagebox.showerror("Error", f"Failed to open project info: {str(e)}")
     
     def on_button_hover(self, event, button, hover_color):
         """Button hover effect"""
@@ -890,7 +890,7 @@ Tips:
             ("🔓 Enable USB Ports", "#27AE60", "#229954", lambda: self.show_password_prompt("Enable", "unblock_usb.bat")),
             ("🔒 Disable USB Ports", "#E74C3C", "#C0392B", lambda: self.show_password_prompt("Disable", "block_usb.bat")),
             ("📊 View Activity Logs", "#3498DB", "#2980B9", self.view_logs),
-            ("📖 View Documentation", "#F39C12", "#E67E22", self.open_project_info),
+            ("📋 Project Info", "#F39C12", "#E67E22", self.open_project_info),
             ("🚪 Exit Application", "#95A5A6", "#7F8C8D", self.root.quit)
         ]
         
